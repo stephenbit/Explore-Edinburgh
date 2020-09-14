@@ -2,9 +2,17 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ee-logo {
+  max-height: 100%;
+  ;}
+
+.navbar-wrapper {
+  height: 6em;
+}
+
+.navbar-wrapper {
+  width: 100%;
+  background-color: black;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -36,3 +44,4 @@
     transform: rotate(360deg);
   }
 }
+
