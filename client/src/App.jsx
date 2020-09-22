@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import BlogEntry from "./components/BlogEntry.jsx";
 import Navbar from "./components/Navbar.jsx";
-import BlogRoll from "./components/Navbar.jsx";
-
+import Posts from "./components/Posts.jsx";
 
 function App() {
-  const [blogPost, setBlogPost] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/explore_edinburgh")
+    fetch("http://localhost:8080/posts")
       .then((res) => res.json())
-      .then((data) => setBlogPost(data._embedded.blog_Posts));
+      .then((data) => setPosts(data.posts));
   }, []);
 
   return (
     <>
-      <Navbar Navbar={Navbar} />
-      //BlogEntries NOT BlogEntry
-      <BlogEntry BlogEntry={BlogEntry} />
+      <Navbar/>
+      <Posts posts={posts}/>
     </>
   );
 }
@@ -31,6 +28,5 @@ function App() {
 //body (html)
 //full size pic of the preview pic
 //tags
-
 
 export default App;
