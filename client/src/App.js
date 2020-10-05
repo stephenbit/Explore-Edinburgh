@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar.jsx";
-import Posts from "./components/Posts.jsx";
+import Navbar from "./components/Navbar.js";
+import Posts from "./components/Posts.js";
 
 function App() {
   const [posts, setPosts] = useState([]);
