@@ -14,8 +14,8 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <Posts posts={posts}/>
+      <Navbar />
+      <Posts posts={posts} />
     </>
   );
 }

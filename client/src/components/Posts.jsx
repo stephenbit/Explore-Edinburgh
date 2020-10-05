@@ -6,7 +6,7 @@ function Posts({ posts }) {
     return (
       <li key={post._id}>
         <h1>{post.title}</h1>
-        
+
         <p>{post.body}</p>
       </li>
     );
