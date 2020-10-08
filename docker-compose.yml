@@ -3,41 +3,43 @@ services:
     mongo:
         image: mongo:3.6.1
         ports:
-        - 27017:27017    
+            - "27017:27017"    
         restart: always
         command: --smallfiles    
-        container_name: app_mongodb_c
+        # container_name: mongodb_container
         volumes:
-        - ~/dockerdata/mongodb:/data/db      
+            - ~/dockerdata/mongodb:/data/db      
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: example
+        networks:
+            - explore-net
 
-    express:
+    backend:
         image: thestephenramsay/explore-edinburgh-server
         restart: always
         ports:
-        - 8080:8080
+            - "8080:8080"
         environment:
-            ME_CONFIG_MONGODB_ADMINUSERNAME: root
-            ME_CONFIG_MONGODB_ADMINPASSWORD: example
+            MONGODB_ADMINUSERNAME: root
+            MONGODB_ADMINPASSWORD: example
+        networks:
+            - explore-net
+        depends_on:
+            - mongo
 
     frontend:
         image: stephenbit/explore-edinburgh-frontend
         build: ./client
         restart: always
         # environment:
-        #     - REACT_APP_GOOGLE_KEY
         ports:
-            # - "5001:80"
-        - "80:80"
-        # networks:
-        #     - daddy-net
-        # depends_on:
-        #     - backend
-        volumes:
-            - ./nginx.conf:/etc/nginx/nginx.conf
+            - "80:80"
+        depends_on:
+            - backend
+        # volumes:
+        #     - ./nginx.conf:/etc/nginx/nginx.conf
 
-    # db:
-    #     image: yourmongoimage
+networks:
+    explore-net:
 
