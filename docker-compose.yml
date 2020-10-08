@@ -15,8 +15,8 @@ services:
         networks:
             - explore-net
 
-    backend:
-        image: thestephenramsay/explore-edinburgh-server
+    server:
+        image: stephenbit/explore-edinburgh-server
         restart: always
         ports:
             - "8080:8080"
@@ -28,15 +28,15 @@ services:
         depends_on:
             - mongo
 
-    frontend:
-        image: stephenbit/explore-edinburgh-frontend
+    client:
+        image: stephenbit/explore-edinburgh-client
         build: ./client
         restart: always
         # environment:
         ports:
             - "80:80"
         depends_on:
-            - backend
+            - server
         # volumes:
         #     - ./nginx.conf:/etc/nginx/nginx.conf
 
