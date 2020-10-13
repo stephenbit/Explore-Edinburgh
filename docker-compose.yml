@@ -10,8 +10,9 @@ services:
         volumes:
             - ~/dockerdata/mongodb:/data/db      
         environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: example
+            MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+            MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+            
         networks:
             - explore-net
 
@@ -21,8 +22,8 @@ services:
         ports:
             - "8080:8080"
         environment:
-            MONGODB_ADMINUSERNAME: root
-            MONGODB_ADMINPASSWORD: example
+            MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+            MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
         networks:
             - explore-net
         depends_on:
