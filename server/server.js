@@ -7,7 +7,7 @@ const port = 8080;
 app.use(cors());
 
 app.get("/posts", (req, res) => {
-  MongoClient.connect("mongodb://root:example@mongo:27017").then((client) => {
+  MongoClient.connect(`mongodb://${process.env.MONGODB_USERRNAME}:${process.env.MONGO_PW}example}@mongo:27017`).then((client) => {
     const db = client.db("explore_edinburgh");
     const postsCollection = db.collection("posts");
     postsCollection
@@ -24,5 +24,5 @@ app.get("/api/test", (req, res) => {
 // test
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Explore Edinburgh listening at http://localhost:${port}`);
 });

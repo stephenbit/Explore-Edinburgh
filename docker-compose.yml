@@ -3,16 +3,15 @@ services:
     mongo:
         image: mongo:3.6.1
         ports:
-            - "27017:27017"    
+            - "27017:27017"
         restart: always
-        command: --smallfiles    
+        command: --smallfiles
         # container_name: mongodb_container
         volumes:
-            - ~/dockerdata/mongodb:/data/db      
+            - ~/dockerdata/mongodb:/data/db
         environment:
-            MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-            MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-            
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
         networks:
             - explore-net
 
@@ -22,8 +21,8 @@ services:
         ports:
             - "8080:8080"
         environment:
-            MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-            MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
         networks:
             - explore-net
         depends_on:
@@ -43,4 +42,3 @@ services:
 
 networks:
     explore-net:
-
