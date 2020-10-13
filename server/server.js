@@ -24,5 +24,5 @@ app.get("/api/test", (req, res) => {
 // test
 
 app.listen(port, () => {
-  console.log(`Explore Edinburgh listening at http://localhost:${port}`);
+  console.log(`Explore Edinburgh listening at http://52.56.174.117:${port}`);
 });
