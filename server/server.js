@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-// const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require("mongodb").MongoClient;
 const port = 8080;
 
 app.use(cors());
@@ -17,12 +17,12 @@ app.get("/posts", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-
-//tests
-
+// test
 app.get("/api/test", (req, res) => {
   res.send({ testworks: true });
+});
+// test
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
