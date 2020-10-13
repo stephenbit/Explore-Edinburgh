@@ -7,7 +7,7 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/posts")
+    fetch("http://52.56.174.117:8080/posts")
       .then((res) => res.json())
       .then((data) => setPosts(data.posts));
   }, []);
