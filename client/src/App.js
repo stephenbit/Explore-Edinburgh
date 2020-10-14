@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar.js";
-import Posts from "./components/Posts.js";
+import Articles from "./components/Articles.js";
+import SingleArticle from "./components/SingleArticle.js";
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/posts")
+    fetch("http://52.56.174.117:8080/articles")
       .then((res) => res.json())
-      .then((data) => setPosts(data.posts));
+      .then((data) => setArticles(data.articles));
   }, []);
 
   return (
     <>
       <Navbar />
-      <Posts posts={posts} />
+      <Articles articles={articles} />
+      <SingleArticle/>
     </>
   );
 }
