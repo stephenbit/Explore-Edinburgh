@@ -6,14 +6,14 @@ const port = 8080;
 
 app.use(cors());
 
-app.get("/posts", (req, res) => {
+app.get("/articles", (req, res) => {
   MongoClient.connect("mongodb://root:example@mongo:27017").then((client) => {
     const db = client.db("explore_edinburgh");
-    const postsCollection = db.collection("posts");
-    postsCollection
+    const articlesCollection = db.collection("articles");
+    articlesCollection
       .find({})
       .toArray()
-      .then((posts) => res.json({ posts: posts }));
+      .then((articles) => res.json({ articles: articles }));
   });
 });
 

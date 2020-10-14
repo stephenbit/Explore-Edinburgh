@@ -1,6 +1,6 @@
 use explore_edinburgh
 db.dropDatabase()
-db.posts.insertMany([{
+db.articles.insertMany([{
     title: "Welcome to Explore Edinburgh(express test 1)",
     featuredPhoto: "/432425521",
     date: "10th September 2020, 14:25",
