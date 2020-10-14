@@ -3,12 +3,12 @@ services:
     mongo:
         image: mongo:3.6.1
         ports:
-            - "27017:27017"    
+            - "27017:27017"
         restart: always
-        command: --smallfiles    
+        command: --smallfiles
         # container_name: mongodb_container
         volumes:
-            - ~/dockerdata/mongodb:/data/db      
+            - ~/dockerdata/mongodb:/data/db
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: example
@@ -21,8 +21,8 @@ services:
         ports:
             - "8080:8080"
         environment:
-            MONGODB_ADMINUSERNAME: root
-            MONGODB_ADMINPASSWORD: example
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
         networks:
             - explore-net
         depends_on:
@@ -42,4 +42,3 @@ services:
 
 networks:
     explore-net:
-
