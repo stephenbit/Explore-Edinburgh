@@ -10,6 +10,7 @@ const ipAddress = "localhost";
 function App() {
   const [articles, setArticles] = useState([]);
   const [singleArticle, setSingleArticle] = useState([]);
+  const [id, setId] = useState();
 
   useEffect(() => {
     fetch(`http://${ipAddress}:8080/articles`)
@@ -17,17 +18,22 @@ function App() {
       .then((data) => setArticles(data.articles));
   }, []);
 
-  useEffect(() => {
-    fetch(`http://${ipAddress}:8080/articles/5f86efd2f876393a60cf362d`)
+  // useEffect(() => {
+  //   getSingleArticle();
+  // }, [id]);
+
+  const getSingleArticle = () => {
+    console.log("fetching");
+    fetch(`http://${ipAddress}:8080/articles/${id}`)
       .then((res) => res.json())
-      .then((data) => setSingleArticle(data.singleArticle));
-  }, []);
+      .then((res) => setSingleArticle(res));
+  };
 
   return (
     <>
       <Navbar />
-      <Articles articles={articles} singleArticle={singleArticle} />
-      <SingleArticle />
+      <Articles articles={articles} />
+      <SingleArticle singleArticle={singleArticle} />
     </>
   );
 }

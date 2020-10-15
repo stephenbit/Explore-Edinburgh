@@ -6,7 +6,6 @@ function Articles({ articles }) {
     return (
       <li key={article._id}>
         <h1>{article.title}</h1>
-
         <p>{article.body}</p>
       </li>
     );
