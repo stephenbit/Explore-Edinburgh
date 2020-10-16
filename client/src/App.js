@@ -13,32 +13,38 @@ function App() {
   const [id, setId] = useState();
 
   useEffect(() => {
+    console.log("ip address: ", ipAddress);
     fetch(`http://${ipAddress}:8080/articles`)
       .then((res) => res.json())
       .then((data) => setArticles(data.articles));
   }, []);
 
-  // useEffect(() => {
-  //   getSingleArticle();
-  // }, [id]);
-
-  // const getSingleArticle = () => {
-  //   console.log("fetching");
-  //   fetch(`http://${ipAddress}:8080/articles/${id}`)
-  //     .then((res) => res.json())
-  //     .then((res) => setSingleArticle(res));
-  // };
-
   function getArticleId(id) {
-    console.log("log2");
-    this.state = 
+    console.log("id: ", id);
+    setId(id);
+    
   }
+
+  const Body = () => {
+    if (!id) {
+      return (
+        <Articles articles={articles} getArticleId={getArticleId} />
+      );
+    } else {
+      return (
+        <SingleArticle
+          // singleArticle={articles[index]}
+          articles={articles}
+          id={id}
+        />
+      );
+    }
+  };
 
   return (
     <>
       <Navbar />
-      <Articles articles={articles} id={id} getArticleId={getArticleId} />
-      <SingleArticle singleArticle={singleArticle} />
+      <Body />
     </>
   );
 }
