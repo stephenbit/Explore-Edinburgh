@@ -16,8 +16,6 @@
   background-color: black;
 }
 
-.body-wrapper {
-}
-
-.body {
+li {
+list-style: none;
 }
