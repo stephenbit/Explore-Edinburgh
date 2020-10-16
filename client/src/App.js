@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar.js";
 import Articles from "./components/Articles.js";
-// import SingleArticle from "./components/SingleArticle.js";
+import Article from "./components/Article.js";
 
 // const ipAddress = "localhost";
 const ipAddress = "52.56.174.117";
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const [singleArticle, setSingleArticle] = useState([]);
+  const [article, setArticle] = useState([]);
 
   useEffect(() => {
     fetch(`http://${ipAddress}:8080/articles`)
@@ -17,27 +17,22 @@ function App() {
       .then((data) => setArticles(data.articles));
   }, []);
 
+  useEffect(() => {
+    console.log(article);
+  });
+
   function getArticle(id) {
-    for (let article of articles )
-      if (id === article._id) setSingleArticle(article);
-    console.log(singleArticle);
+    for (let article of articles)
+      if (id === article._id) setArticle(article);
   }
 
   return (
     <>
       <Navbar />
       <Articles articles={articles} getArticle={getArticle} />
+      <Article article={article} />
     </>
   );
 }
-
-//id
-//title
-//author
-//preview pic
-//date/time
-//body (html)
-//full size pic of the preview pic
-//tags
 
 export default App;
