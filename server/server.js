@@ -4,8 +4,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
-const mongoClientDetails = "mongodb://localhost:27017";
-// const mongoClientDetails = "mongodb://root:example@mongo:27017"
+// const mongoClientDetails = "mongodb://localhost:27017";
+const mongoClientDetails = "mongodb://root:example@mongo:27017"
 
 const port = 8080;
 
