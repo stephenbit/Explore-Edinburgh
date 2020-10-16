@@ -17,5 +17,4 @@ function Articles({ articles, getArticle }) {
 
   return <ul>{articleList}</ul>;
 }
-
 export default Articles;
