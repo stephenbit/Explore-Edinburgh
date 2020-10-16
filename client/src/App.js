@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar.js";
 import Articles from "./components/Articles.js";
 import SingleArticle from "./components/SingleArticle.js";
 
-const ipAddress = "localhost";
-// const ipAddress = "52.56.174.117"
+// const ipAddress = "localhost";
+const ipAddress = "52.56.174.117";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -22,17 +22,22 @@ function App() {
   //   getSingleArticle();
   // }, [id]);
 
-  const getSingleArticle = () => {
-    console.log("fetching");
-    fetch(`http://${ipAddress}:8080/articles/${id}`)
-      .then((res) => res.json())
-      .then((res) => setSingleArticle(res));
-  };
+  // const getSingleArticle = () => {
+  //   console.log("fetching");
+  //   fetch(`http://${ipAddress}:8080/articles/${id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => setSingleArticle(res));
+  // };
+
+  function getArticleId(id) {
+    console.log("log2");
+    this.state = 
+  }
 
   return (
     <>
       <Navbar />
-      <Articles articles={articles} />
+      <Articles articles={articles} id={id} getArticleId={getArticleId} />
       <SingleArticle singleArticle={singleArticle} />
     </>
   );
