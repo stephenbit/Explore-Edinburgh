@@ -1,9 +1,9 @@
 import React from "react";
 import "../App.css";
 
-function Articles({ articles, getArticleId }) {
+function Articles({ articles, getArticle }) {
   const handleClick = (id) => {
-    getArticleId(id);
+    getArticle(id);
   };
 
   const articleList = articles.map((article) => {

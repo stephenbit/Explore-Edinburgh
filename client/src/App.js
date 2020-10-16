@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar.js";
 import Articles from "./components/Articles.js";
-import SingleArticle from "./components/SingleArticle.js";
+// import SingleArticle from "./components/SingleArticle.js";
 
 // const ipAddress = "localhost";
 const ipAddress = "52.56.174.117";
@@ -10,41 +10,23 @@ const ipAddress = "52.56.174.117";
 function App() {
   const [articles, setArticles] = useState([]);
   const [singleArticle, setSingleArticle] = useState([]);
-  const [id, setId] = useState();
 
   useEffect(() => {
-    console.log("ip address: ", ipAddress);
     fetch(`http://${ipAddress}:8080/articles`)
       .then((res) => res.json())
       .then((data) => setArticles(data.articles));
   }, []);
 
-  function getArticleId(id) {
-    console.log("id: ", id);
-    setId(id);
-    
+  function getArticle(id) {
+    for (let article of articles )
+      if (id === article._id) setSingleArticle(article);
+    console.log(singleArticle);
   }
-
-  const Body = () => {
-    if (!id) {
-      return (
-        <Articles articles={articles} getArticleId={getArticleId} />
-      );
-    } else {
-      return (
-        <SingleArticle
-          // singleArticle={articles[index]}
-          articles={articles}
-          id={id}
-        />
-      );
-    }
-  };
 
   return (
     <>
       <Navbar />
-      <Body />
+      <Articles articles={articles} getArticle={getArticle} />
     </>
   );
 }
