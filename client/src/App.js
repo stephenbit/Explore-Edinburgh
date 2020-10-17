@@ -5,7 +5,7 @@ import Articles from "./components/Articles.js";
 import Article from "./components/Article.js";
 
 // const ipAddress = "localhost";
-const ipAddress = "52.56.174.117";
+const ipAddress = "3.9.7.4";
 
 function App() {
   const [articles, setArticles] = useState([]);
