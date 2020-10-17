@@ -17,13 +17,8 @@ function App() {
       .then((data) => setArticles(data.articles));
   }, []);
 
-  useEffect(() => {
-    console.log(article);
-  });
-
   function getArticle(id) {
-    for (let article of articles)
-      if (id === article._id) setArticle(article);
+    for (let article of articles) if (id === article._id) setArticle(article);
   }
 
   return (

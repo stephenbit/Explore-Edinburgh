@@ -7,10 +7,11 @@ function Articles({ articles, getArticle }) {
   };
 
   const articleList = articles.map((article) => {
+    const body = { __html: article.body };
     return (
       <li key={article._id} onClick={() => handleClick(article._id)}>
         <h1>{article.title}</h1>
-        <p>{article.body}</p>
+        <div dangerouslySetInnerHTML={body} />
       </li>
     );
   });
