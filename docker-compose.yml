@@ -3,42 +3,26 @@ services:
     mongo:
         image: mongo:3.6.1
         ports:
-<<<<<<< HEAD
             - "27017:27017"
-        restart: always
+        # restart: always
         command: --smallfiles
         # container_name: mongodb_container
         volumes:
             - ~/dockerdata/mongodb:/data/db
         environment:
-            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-=======
-            - "27017:27017"    
-        restart: always
-        command: --smallfiles    
-        volumes:
-            - ~/dockerdata/mongodb:/data/db      
-        environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: example
->>>>>>> master
         networks:
             - explore-net
 
     server:
         image: stephenbit/explore-edinburgh-server
-        restart: always
+        # restart: always
         ports:
             - "8080:8080"
         environment:
-<<<<<<< HEAD
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: example
-=======
             MONGODB_ADMINUSERNAME: root
             MONGODB_ADMINPASSWORD: example
->>>>>>> master
         networks:
             - explore-net
         depends_on:
@@ -46,19 +30,13 @@ services:
 
     client:
         image: stephenbit/explore-edinburgh-client
-<<<<<<< HEAD
-        build: ./client
-        restart: always
-        # environment:
-=======
-        restart: always
->>>>>>> master
+        # restart: always
         ports:
             - "80:80"
         depends_on:
             - server
-        # volumes:
-        #     - ./nginx.conf:/etc/nginx/nginx.conf
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
 
 networks:
     explore-net:

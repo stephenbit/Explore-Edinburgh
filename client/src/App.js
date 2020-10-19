@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import Navbar from "./components/Navbar.js";
 import Articles from "./components/Articles.js";
 import Article from "./components/Article.js";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import "./App.css";
 
 // const ipAddress = "localhost";
 const ipAddress = "3.9.7.4";
