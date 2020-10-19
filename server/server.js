@@ -10,7 +10,7 @@ const mongoClientDetails = "mongodb://root:example@mongo:27017";
 const port = 8080;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
 MongoClient.connect(`${mongoClientDetails}`, { useUnifiedTopology: true }).then(
   (client) => {
